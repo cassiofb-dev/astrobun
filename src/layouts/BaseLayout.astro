@@ -1,0 +1,26 @@
+---
+import HeadMetaComponent from "../components/HeadMetaComponent.astro";
+import HeaderComponent from "../components/header/HeaderComponent.astro";
+import FooterComponent from "../components/footer/FooterComponent.astro";
+
+const { title, description, image } = Astro.props as BaseLayoutInterface;
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <HeadMetaComponent
+      title={title?.length ? title.concat(" | Cássio Fernando") : title}
+      description={description}
+      image={image}
+    />
+  </head>
+
+  <body class="w-full">
+    <HeaderComponent />
+    <main>
+      <slot />
+    </main>
+    <FooterComponent />
+  </body>
+</html>

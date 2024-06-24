@@ -1,0 +1,21 @@
+---
+import { isExternal } from "../../consts";
+import type { LinkItemInterface } from "../../interfaces/LinkItemInterface"
+
+const { label = "Home", path = "/" } = Astro.props as LinkItemInterface
+
+const { pathname } = Astro.url;
+const subpath = pathname.match(/[^\/]+/g);
+const isActive = path === pathname || path === "/" + subpath?.[0];
+---
+
+<li class="px-4">
+  <a
+    href={path}
+    class:list={[{ active: isActive }]}
+    target={isExternal(path) ? "_blank" : "_self"}
+    class="prose-base"
+  >
+    {label}
+  </a>
+</li>

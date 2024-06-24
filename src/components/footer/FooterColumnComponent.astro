@@ -1,0 +1,21 @@
+---
+import { isExternal } from "../../consts";
+import type { FooterColumnInterface } from "../../interfaces/FooterColumnInterface";
+
+const footerColumn = Astro.props as FooterColumnInterface;
+---
+
+<nav>
+  <h6 class="footer-title">{footerColumn.title}</h6>
+  {
+    footerColumn.items.map((footerItem) => (
+      <a
+        href={footerItem.path}
+        target={isExternal(footerItem.path) ? "_blank" : "_self"}
+        class="link link-primary"
+      >
+        {footerItem.label}
+      </a>
+    ))
+  }
+</nav>

@@ -1,0 +1,17 @@
+---
+import { getCollection } from "astro:content";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+import BlogPostCardComponent from "../../components/BlogPostCardComponent.astro";
+
+const posts = (await getCollection("blog")).sort(
+  (a, b) => b.data.publicationDate.valueOf() - a.data.publicationDate.valueOf(),
+);
+---
+
+<BaseLayout title="Blog">
+  <ul class="p-16 grid grid-cols-1 md:grid-cols-3 gap-16">
+    {
+      posts.map((post) =>  <BlogPostCardComponent slug={post.slug} {...post.data} />)
+    }
+  </ul>
+</BaseLayout>

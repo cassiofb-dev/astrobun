@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import { SITE_LOGO, daysDiff } from "../consts";
+import FormattedDateComponent from "./FormattedDateComponent.astro";
+
+const post = Astro.props as BlogPostInterface;
+---
+
+<li>
+  <div class="card bg-base-100 shadow-xl h-full">
+    <figure>
+      <Image
+        src={post.heroImage || SITE_LOGO}
+        alt={post.title}
+        width={720}
+        height={360}
+      />
+    </figure>
+    <div class="card-body">
+      <h2 class="card-title">
+        <a class="link link-primary" href={`/blog/${post.slug}/`}>
+          {post.title}
+        </a>
+        <span class="text-end">
+        {
+          daysDiff(new Date(), post.publicationDate) < 7 ? (
+            <div class="badge badge-secondary">NEW</div>
+          ) : (
+            ""
+          )
+        }
+        </span>
+      </h2>
+      <p>{post.description}</p>
+      <div class="card-actions justify-start">
+        <FormattedDateComponent date={post.publicationDate} />
+      </div>
+      <div class="card-actions justify-end">
+        {post.tags?.map((tag) => <div class="badge badge-outline">{tag}</div>)}
+      </div>
+    </div>
+  </div>
+</li>

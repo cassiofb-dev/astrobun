@@ -1,0 +1,102 @@
+---
+import type { FooterColumnInterface } from "../../interfaces/FooterColumnInterface";
+
+import LogoComponent from "../LogoComponent.astro";
+import FooterColumnComponent from "./FooterColumnComponent.astro";
+
+const today = new Date();
+
+const footerColumns: FooterColumnInterface[] = [
+  {
+    title: "Pages",
+    items: [
+      {
+        label: "Home",
+        path: "/",
+      },
+      {
+        label: "About",
+        path: "/about",
+      },
+      {
+        label: "Blog",
+        path: "/blog",
+      },
+    ],
+  },
+  {
+    title: "Contact",
+    items: [
+      {
+        label: "Email",
+        path: "mailto:contact@cassiofernando.com",
+      },
+      {
+        label: "Matrix",
+        path: "https://matrix.to/#/@cassio:mozilla.org",
+      },
+      {
+        label: "Linkedin",
+        path: "https://www.linkedin.com/in/cassiofb-dev",
+      },
+      {
+        label: "Twitter/X",
+        path: "https://x.com/cassiofb_dev",
+      },
+    ],
+  },
+  {
+    title: "Made with",
+    items: [
+      {
+        label: "Bun",
+        path: "https://bun.sh/",
+      },
+      {
+        label: "Astro",
+        path: "https://astro.build/",
+      },
+      {
+        label: "daisyUI",
+        path: "https://daisyui.com/",
+      },
+      {
+        label: "Tailwind CSS",
+        path: "https://tailwindcss.com/",
+      },
+    ],
+  },
+  {
+    title: "More",
+    items: [
+      {
+        label: "Terminal",
+        path: "https://term.cassiofernando.com/",
+      },
+      {
+        label: "Github",
+        path: "https://github.com/cassiofb-dev/cassio-souza",
+      },
+    ],
+  },
+];
+---
+
+<footer class="footer bg-base-200 text-base-content p-10">
+  {
+    footerColumns.map(footerColumn => <FooterColumnComponent {...footerColumn}/>)
+  }
+</footer>
+
+<footer
+  class="footer bg-base-200 text-base-content border-base-300 border-t py-8"
+>
+  <aside class="grid-flow-col items-center mx-auto">
+    <LogoComponent />
+    <p class="ms-2">
+      Copyright © {today.getFullYear()} Cássio Fernando.
+      <br />
+      Having fun learning astro, bun and tailwind.
+    </p>
+  </aside>
+</footer>

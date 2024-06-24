@@ -1,0 +1,10 @@
+services:
+  astrobun:
+    network_mode: "host"
+    container_name: astrobun
+    image: oven/bun:alpine
+    working_dir: "/astrobun"
+    user: 1000:1000
+    command: bun dev
+    volumes:
+      - ./:/astrobun
