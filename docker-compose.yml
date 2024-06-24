@@ -5,6 +5,7 @@ services:
     image: oven/bun:alpine
     working_dir: "/astrobun"
     user: 1000:1000
+    stop_grace_period: 1s
     command: sh -c "bun install && bun dev"
     volumes:
       - ./:/astrobun
