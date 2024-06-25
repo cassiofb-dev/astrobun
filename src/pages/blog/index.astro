@@ -9,7 +9,7 @@ const posts = (await getCollection("blog")).sort(
 ---
 
 <BaseLayout title="Blog">
-  <ul class="p-16 grid grid-cols-1 md:grid-cols-3 gap-16">
+  <ul class="p-16 grid grid-cols-1 lg:grid-cols-3 gap-16">
     {
       posts.map((post) =>  <BlogPostCardComponent slug={post.slug} {...post.data} />)
     }
