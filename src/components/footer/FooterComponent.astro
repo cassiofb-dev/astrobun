@@ -1,7 +1,7 @@
 ---
 import type { FooterColumnInterface } from "../../interfaces/FooterColumnInterface";
 
-import LogoComponent from "../LogoComponent.astro";
+import AvatarComponent from "../AvatarComponent.astro";
 import FooterColumnComponent from "./FooterColumnComponent.astro";
 
 const today = new Date();
@@ -96,7 +96,7 @@ const footerColumns: FooterColumnInterface[] = [
   class="footer bg-base-200 text-base-content border-base-300 border-t py-8 px-4"
 >
   <aside class="grid-flow-col items-center mx-auto">
-    <LogoComponent />
+    <AvatarComponent />
     <p class="ms-2">
       Copyright © {today.getFullYear()} Cássio Fernando.
       <br />
