@@ -5,8 +5,7 @@ import type { LinkItemInterface } from "../../interfaces/LinkItemInterface"
 const { label = "Home", path = "/" } = Astro.props as LinkItemInterface
 
 const { pathname } = Astro.url;
-const subpath = pathname.match(/[^\/]+/g);
-const isActive = path === pathname || path === "/" + subpath?.[0];
+const isActive = path === pathname;
 ---
 
 <li class="px-4">

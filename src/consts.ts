@@ -7,6 +7,9 @@ export const SITE_DESCRIPTION = 'My future personal blog using astro, bun and ta
 
 export const capitalize = (str: string) => str.charAt(0).toUpperCase() + str.slice(1);
 export const isExternal = (str: string) => str.includes(':');
+export const sleep = (milliSeconds: number) => new Promise((resolve) => setTimeout(resolve, milliSeconds));
+export const randomInt = (int: number) => Math.floor(Math.random() * int);
+export const pickRandom = (list: Array<any>) => list[randomInt(list.length)];
 
 export const daysDiff = (dateA: Date, dateB: Date) => {
   const diff = dateA.getTime() - dateB.getTime();

@@ -1,20 +1,35 @@
 ---
-import { type CollectionEntry, getCollection } from 'astro:content';
-import BlogPostLayout from '../../layouts/BlogPostLayout.astro';
+import { type CollectionEntry, getCollection } from "astro:content";
+import BlogPostLayout from "../../layouts/BlogPostLayout.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.slug },
     props: post,
   }));
 }
 
-type Props = CollectionEntry<'blog'>;
+type Props = CollectionEntry<"blog">;
 
 const post = Astro.props;
 const { Content } = await post.render();
 ---
+
+<script>
+  /**
+   * @credits https://stackoverflow.com/a/50613098
+   */
+  (() => {
+    document.querySelectorAll("a").forEach((link) => {
+      link.classList.add("link-primary");
+
+      if (link.hostname !== location.hostname) {
+        link.setAttribute("target", "_blank");
+      }
+    });
+  })();
+</script>
 
 <BlogPostLayout {...post.data}>
   <Content />

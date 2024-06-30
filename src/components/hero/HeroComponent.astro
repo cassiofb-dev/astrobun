@@ -1,0 +1,42 @@
+---
+import HeroSVGBackend from "./HeroSVGBackend.astro";
+import HeroSVGFrontend from "./HeroSVGFrontend.astro";
+import HeroSVGProgramming from "./HeroSVGProgramming.astro";
+---
+
+<script>
+  import { pickRandom } from "../../consts";
+
+  const svgWrapperName = pickRandom([
+    ".hero-svg-backend svg",
+    ".hero-svg-frontend svg",
+    ".hero-svg-programming svg",
+  ]);
+
+  const svgWrapper = document.querySelector(svgWrapperName);
+
+  svgWrapper?.parentElement?.classList.remove("hidden");
+
+  setTimeout(() => {
+    svgWrapper?.classList.add("active");
+  }, 500);
+</script>
+
+<div
+  class="hero min-h-screen bg-base-100"
+  style="background-image: url(/pracinhas.avif);"
+>
+  <div class="hero-overlay bg-opacity-60"></div>
+  <div class="hero-content text-center">
+    <div class="max-w-xl">
+      <h1 class="text-5xl font-bold">Hi, Cassio's here!</h1>
+      <p class="pt-6 pb-16">
+        This website is a work in progress test I'm doing to learn Astro, Bun
+        and Tailwind.
+      </p>
+      <HeroSVGBackend />
+      <HeroSVGFrontend />
+      <HeroSVGProgramming />
+    </div>
+  </div>
+</div>
